@@ -8,12 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Chantier extends Model
 {
     use HasFactory;
-
     /**
      * La relation many-to-many avec le modèle Employe.
      */
-    public function employes()
+    public function users()
     {
-        return $this->belongsToMany(Employe::class, 'chantier_employe');
+        return $this->belongsToMany(User::class,"chantier_employe", "chantier_id", "employe_id");
     }
 }

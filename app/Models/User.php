@@ -40,4 +40,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+    public function chantiers()
+    {
+        return $this->belongsToMany(Chantier::class, "chantier_employe", "chantier_id", "employe_id");
+    }
 }
