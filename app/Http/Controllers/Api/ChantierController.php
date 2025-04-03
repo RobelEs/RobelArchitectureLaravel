@@ -72,6 +72,7 @@ class ChantierController extends Controller
             return response()->json(['message' => 'Chantier deleted successfully']);
         } catch (\Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
+            //
         }
     }
 }
