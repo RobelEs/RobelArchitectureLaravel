@@ -15,8 +15,8 @@ class MaterielResource extends JsonResource
             'id' => $this->id,
             'nom' => $this->nom,
             'quantite_disponible' => $this->quantite_disponible,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
+            // 'created_at' => $this->created_at,
+            // 'updated_at' => $this->updated_at,
         ];
     }
 }

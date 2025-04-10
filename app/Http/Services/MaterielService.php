@@ -12,7 +12,12 @@ class MaterielService
      */
     public function getMateriels()
     {
-        return Materiel::all();
+        try {
+            return Materiel::all();
+        } catch (\Exception $e) {
+            throw $e;
+        }
+        // return Materiel::all();
     }
 
     /**
