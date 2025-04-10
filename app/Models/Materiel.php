@@ -15,9 +15,8 @@ class Materiel extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'nom', // Assure-toi que ces champs correspondent aux colonnes de ta table
-        'description', // Ajoute des champs supplémentaires si nécessaire
-        'quantite_disponible', // Exemple de champ pour la quantité de matériel
+        'nom',
+        'quantite_disponible',
     ];
 
     /**
@@ -25,5 +24,5 @@ class Materiel extends Model
      *
      * @var string
      */
-    protected $table = 'materiels'; // Facultatif, si la table suit la convention de nommage
+    protected $table = 'materiels'; // Facultatif si la table suit la convention
 }
