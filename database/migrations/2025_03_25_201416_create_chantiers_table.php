@@ -10,10 +10,10 @@ return new class extends Migration
     {
         Schema::create('chantiers', function (Blueprint $table) {
             $table->id();
-            $table->string('nom');
-            $table->string('adresse');
-            $table->date('date_debut');
-            $table->date('date_fin')->nullable();
+            $table->string('name');
+            $table->string('address');
+            $table->date('start_date');
+            $table->date('end_date')->nullable();
             $table->foreignId('client_id')->constrained('users'); // Pas de cascade ici
             $table->timestamps();
         });

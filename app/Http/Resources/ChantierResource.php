@@ -11,10 +11,11 @@ class ChantierResource extends JsonResource
         // Transformation des données du modèle Chantier avant de les envoyer en réponse JSON
         return [
             'id' => $this->id,
-            'nom' => $this->nom,
-            'adresse' => $this->adresse,
-            'date_debut' => $this->date_debut,
-            'date_fin' => $this->date_fin,
+            'name' => $this->name,
+            'address' => $this->address,
+            'start_date' => $this->start_date,
+            'end_date' => $this->end_date,
+            'client_id' => $this->client_id,
         ];
     }
 }

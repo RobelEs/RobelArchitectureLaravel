@@ -10,10 +10,10 @@ class Chantier extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nom',
-        'adresse',
-        'date_debut',
-        'date_fin',
+        'name',
+        'address',
+        'start_date',
+        'end_date',
     ];
     /**
      * La relation many-to-many avec le modèle Employe.
