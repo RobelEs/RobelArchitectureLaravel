@@ -19,6 +19,7 @@ class ChantierController extends Controller
      * Display a listing of the resource.
      */
     public function index() {
+
         try {
             $chantiers = $this->_chantierService->getChantiers();
             return ChantierResource::collection($chantiers);
