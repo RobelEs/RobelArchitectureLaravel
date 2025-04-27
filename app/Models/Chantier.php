@@ -22,4 +22,11 @@ class Chantier extends Model
     {
         return $this->belongsToMany(User::class,"chantier_employe", "chantier_id", "employe_id");
     }
+    /**
+     * La relation many-to-many avec le modèle Materiel.
+     */
+    public function materiels()
+    {
+        return $this->belongsToMany(Materiel::class, "chantier_materiel", "chantier_id", "materiel_id");
+    }
 }

@@ -6,20 +6,23 @@ use App\Http\Controllers\Controller;
 use App\Http\Services\ChantierService;
 use App\Http\Resources\ChantierResource;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;       
+use Spatie\Permission\Models\Permission;
+
+
 
 class ChantierController extends Controller
 {
+    use AuthorizesRequests;
     private ChantierService $_chantierService;
 
     public function __construct(ChantierService $chantierService) {
         $this->_chantierService = $chantierService;
     }
 
-    /**
-     * Display a listing of the resource.
-     */
-    public function index() {
 
+    public function index() {
+        $this->authorize('view chantier');
         try {
             $chantiers = $this->_chantierService->getChantiers();
             return ChantierResource::collection($chantiers);
@@ -28,10 +31,8 @@ class ChantierController extends Controller
         }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request) {
+        $this->authorize('create chantier');
         try {
             $chantier = $this->_chantierService->storeChantier($request);
             return new ChantierResource($chantier);
@@ -40,10 +41,8 @@ class ChantierController extends Controller
         }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id) {
+        $this->authorize('view chantier');
         try {
             $chantier = $this->_chantierService->getChantierById($id);
             return new ChantierResource($chantier);
@@ -52,10 +51,9 @@ class ChantierController extends Controller
         }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(Request $request, string $id) {
+        $this->authorize('update chantier');
         try {
             $chantier = $this->_chantierService->updateChantier($request, $id);
             return new ChantierResource($chantier);
@@ -64,10 +62,9 @@ class ChantierController extends Controller
         }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
+
     public function destroy(string $id) {
+        $this->authorize('delete chantier');
         try {
             $this->_chantierService->deleteChantier($id);
             return response()->json(['message' => 'Chantier deleted successfully']);

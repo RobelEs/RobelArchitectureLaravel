@@ -68,6 +68,26 @@ class DatabaseSeeder extends Seeder
 
         // Génération de matériels aléatoires
         Materiel::factory()->count(20)->create();
+
+        // Génération de chantiers_employes aléatoires
+        foreach (Chantier::all() as $chantier) {
+            $chantier->users()->attach($users->random(rand(1, 5))->pluck('id')->toArray());
+        }
+            // Génération de chantier_materiels aléatoires
+        foreach (Chantier::all() as $chantier) {
+            $materiels = Materiel::all()->random(rand(1, 5));  // Sélectionner un nombre aléatoire de matériels
+            $attachements = [];
+
+            foreach ($materiels as $materiel) {
+                $attachements[$materiel->id] = [
+                    'quantite_utilisee' => rand(1, 10) // Attribuer une quantité aléatoire
+                ];
+            }
+
+            $chantier->materiels()->attach($attachements);
+        }
+
+    
  
 
     }
