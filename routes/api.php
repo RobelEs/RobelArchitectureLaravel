@@ -8,14 +8,13 @@ use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\ChantierController;
 use App\Http\Controllers\Api\MaterielController;
 
-
-//créer moi une route login 
+//route pour les guests
 Route::group(['middleware' => ['guest']], function () {
     Route::post('/login', [AuthController::class, 'login']);
+    //POST /register → pour s'inscrire.
     Route::post('/register', [AuthController::class, 'register']);
 });
-
-// créer un group middlew
+//uniquement si l'utilisateur est authentifié avec Laravel Sanctum.
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('/logout', [AuthController::class, 'logout']);
 
