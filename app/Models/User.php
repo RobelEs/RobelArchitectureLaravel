@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
     public function chantiers()
     {
-        return $this->belongsToMany(Chantier::class, "chantier_employe", "chantier_id", "employe_id");
+        return $this->belongsToMany(Chantier::class, "chantier_employe", "employe_id", "chantier_id");
     }
 }
