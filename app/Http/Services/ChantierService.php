@@ -19,7 +19,7 @@ class ChantierService {
                 return Chantier::all(); // Récupérer tous les chantiers
             }
             else{
-                return $user->chantiers();
+                return $user->chantiers()->get();
             }
         } catch (\Exception $e) {
             throw $e;
