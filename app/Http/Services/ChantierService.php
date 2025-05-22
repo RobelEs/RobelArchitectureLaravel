@@ -4,14 +4,23 @@ namespace App\Http\Services;
 
 use App\Models\Chantier;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 
 class ChantierService {
 
     public function getChantiers() {
+
         try {
-            return Chantier::all(); // Récupérer tous les chantiers
+            $user = Auth::user();
+
+            if($user->hasRole("admin")){
+                return Chantier::all(); // Récupérer tous les chantiers
+            }
+            else{
+                return $user->chantiers();
+            }
         } catch (\Exception $e) {
             throw $e;
         }
